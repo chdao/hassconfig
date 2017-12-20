@@ -10,14 +10,7 @@
   name: "garage_sensor_battery"
   state_topic: "smartthings/Garage Motion Sensor/battery/state"
   unit_of_measurement: "%"
-- platform: mqtt
-  name: "main_floor_temperature"
-  state_topic: "smartthings/Main Floor/temperature/state"
-  unit_of_measurement: "°F"
-- platform: mqtt
-  name: "main_floor_humidity"
-  state_topic: "smartthings/Main Floor/humidity/state"
-  unit_of_measurement: "%"
+
 - platform: mqtt
   name: "front_doorbell_motion"
   state_topic: "smartthings/Front Door Bell/motion/state"
@@ -28,9 +21,6 @@
   name: "front_doorbell_battery"
   state_topic: "smartthings/Front Door Bell/battery/state"
   unit_of_measurement: "%"
-- platform: mqtt
-  name: "main_floor_occupancy"
-  state_topic: "smartthings/Main Floor/motion/state"
 - platform: mqtt
   name: "guest_bedroom_sensor_motion"
   state_topic: "smartthings/Guest Room Motion Sensor/motion/state"
