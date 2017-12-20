@@ -1,0 +1,2 @@
+platform: lifx
+broadcast: 10.2.1.255

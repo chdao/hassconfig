@@ -1,0 +1,6 @@
+platform: kodi
+name: "tethys"
+host: 10.2.0.19
+username: kodi
+password: kodi
+port: 8080

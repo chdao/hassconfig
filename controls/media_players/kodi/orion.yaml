@@ -1,0 +1,7 @@
+platform: kodi
+name: "orion"
+host: 10.2.0.13
+username: kodi
+password: kodi
+port: 8080
+turn_off_action: quit

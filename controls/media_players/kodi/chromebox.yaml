@@ -1,0 +1,5 @@
+platform: kodi
+name: "chromebox"
+host: 10.2.0.12
+username: kodi
+password: kodi

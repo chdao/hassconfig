@@ -1,0 +1,6 @@
+platform: kodi
+name: "procyon"
+host: 10.2.0.16
+username: kodi
+password: kodi
+port: 8080

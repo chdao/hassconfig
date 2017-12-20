@@ -1,0 +1,6 @@
+platform: mqtt
+name: basement_stairs
+command_topic: "smartthings/Basement Stairs/switch"
+state_topic: "smartthings/Basement Stairs/switch/state"
+payload_on: "on"
+payload_off: "off"
