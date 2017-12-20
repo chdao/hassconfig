@@ -1,0 +1,195 @@
+default_view:
+  name: Home
+  view: yes
+  entities:
+    - group.presence
+    - group.front_door
+
+living_room_view:
+    name: "Living Room"
+    view: yes
+    entities:
+      - group.living_room
+      - group.kitchen
+
+sensor_view:
+  name: Sensors
+  view: yes
+  icon: mdi:gauge
+  entities:
+    - group.temperature
+    - group.motion_sensors
+    - camera.weather_map
+    - camera.where_are_we
+
+media_view:
+  name: Media Players
+  view: yes
+  icon: mdi:arrow-right-drop-circle-outline
+  entities:
+    - group.media_basement
+    - group.media_first_floor
+    - group.media_second_floor
+    - media_player.procyon
+
+home_view:
+  name: "Global"
+  icon: mdi:home-variant
+  view: yes
+  entities:
+    - group.locks
+    - group.living_room
+    - group.kitchen
+    - group.master_bedroom
+    - group.master_bathroom
+    - group.guest_bedroom
+    - group.garage
+    - group.front_door
+    - group.basement
+    - sensor.charles_presence
+    - sensor.amy_presence
+    - group.laundry_room
+
+cameras: 
+  name: "IP Cameras"
+  entities:
+    - camera.amcrest_basement
+ 
+  
+media_basement:
+  name: "Basement"
+
+media_first_floor:
+  name: "First Floor"
+  entities:
+    - media_player.chromebox
+    - media_player.kitchen_home
+    - media_player.samsung_tv_remote
+
+media_second_floor:
+    name: "Second Floor"
+    entities:
+      - media_player.bedroom_display
+
+basement:
+  name: Basement
+  entities:
+    - switch.basement_stairs
+    - switch.basement
+    - switch.basement_outside
+    - switch.basement_laundry_room
+    - camera.amcrest_basement
+
+
+living_room:
+  name: Living Room
+  control: hidden
+  entities:
+    - switch.stairs
+    - light.fireplace_level
+    - group.dining_table
+    - light.behind_the_couch
+    - switch.couch_light
+    - switch.deck
+    - media_player.chromebox 
+    - sensor.main_floor_temperature
+    - sensor.main_floor_humidity
+    - binary_sensor.main_floor_occupancy
+
+kitchen:
+  name: Kitchen
+  control: hidden
+  entities:
+    - switch.sink
+    - switch.front_door_inside_light
+    - switch.kitchen_small_light
+    - switch.kitchen_main_light
+    - media_player.kitchen_home
+    - light.lifx_kitchen
+
+master_bedroom:
+  name: Master Bedroom
+  entities:
+    - media_player.bedroom_display
+    - media_player.orion
+    - sensor.master_bedroom_temperature
+    - sensor.master_bedroom_occupancy
+    - light.master_bedroom
+    - sensor.master_bedroom_door_contact
+
+master_bathroom:
+  name: Master Bathroom
+  entities:
+
+guest_bedroom:
+  name: Guest Bedroom
+  entities:
+    - sensor.guest_bedroom_sensor_temperature
+    - sensor.guest_bedroom_sensor_motion
+    - sensor.guest_bedroom_sensor_battery
+
+guest_bathroom:
+  name: Guest Bathroom
+  entities:
+
+front_door:
+  name: "Front Door"
+  entities:
+    - sensor.front_door_contact
+    - lock.front_door_deadbolt_locked
+    - sensor.front_doorbell_motion
+    - sensor.front_doorbell_button
+    - sensor.front_doorbell_battery
+    - sensor.front_door_lock_battery
+
+garage:
+  name: "Garage"
+  entities:
+    - sensor.garage_sensor_temperature
+    - sensor.garage_sensor_motion
+    - sensor.garage_sensor_battery
+
+locks:
+   name: Locks
+   entities:
+     - lock.front_door_deadbolt_locked
+
+temperature:
+  name: Temperature
+  entities:
+    - sensor.main_floor_temperature
+    - sensor.main_floor_humidity
+    - sensor.master_bedroom_sensor_temperature
+    - sensor.garage_sensor_temperature
+    - sensor.guest_bedroom_sensor_temperature
+
+owners:
+  name: "Owners of the home"
+  entities:
+    - sensor.amy_android_presence
+    - device_tracker.cdaoust_cell
+
+presence:
+  name: "Who's home?"
+  entities:
+    - device_tracker.cdaoust_cell
+    - device_tracker.alott_bullhead
+
+
+laundry_room_lights:
+  name: "Laundry Room Lights"
+  entities:
+    - light.laundry_room_door
+    - light.laundry_room_back
+
+laundry_room:
+  name: "Laundry Room"
+  entities:
+    - sensor.laundry_room_door_contact
+    - group.laundry_room_lights
+
+dining_table:
+  name: "Dining Table"
+  entities:
+    - light.dining_table_1
+    - light.dining_table_2

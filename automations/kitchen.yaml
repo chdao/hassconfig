@@ -1,0 +1,29 @@
+- alias: "turn on led under cabinet if lights are off (after sunset)"
+  trigger:
+    platform: template
+    value_template: "{% if ((is_state('switch.kitchen_small_light','off')) and (is_state('switch.kitchen_main_light','off'))) %}true{% endif %}"
+  condition:
+   condition: or
+   conditions:
+     - condition: sun
+       after: sunset
+     - condition: sun
+       before: sunrise
+  action:
+    service: light.turn_on
+    entity_id: light.lifx_kitchen
+
+- alias: "turn off led under cabinet if lights are on (after sunset)"
+  trigger:
+    platform: template
+    value_template: "{% if ((is_state('switch.kitchen_small_light','on')) or (is_state('switch.kitchen_main_light','on'))) %}true{% endif %}"
+  condition: 
+    condition: or
+    conditions:
+      - condition: sun
+        after: sunset
+      - condition: sun
+        before: sunrise
+  action:
+    service: light.turn_off
+    entity_id: light.lifx_kitchen

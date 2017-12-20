@@ -1,0 +1,11 @@
+- alias: "re-lock front door after 15 minutes"
+  trigger:
+    platform: state
+    entity_id: lock.front_door_deadbolt_locked
+    to: "unlocked"
+  action:
+    service: script.turn_on
+    entity_id: script.timed_front_door_lock
+    data:
+      variables: 
+        desired_delay: "00:15:00"

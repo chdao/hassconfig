@@ -1,0 +1,39 @@
+- alias: "getting dark outside"
+  trigger:
+    - platform: sun
+      event: sunset
+  action:
+    - service: scene.turn_on
+      entity_id: scene.sunset
+    - service: scene.turn_on
+      entity_id: scene.hue_wakeup
+
+- alias: "getting dark in the dining area"
+  trigger:
+    - platform: sun
+      event: sunset
+      offset: "-01:00:00"
+  action:
+    - service: light.turn_on
+      entity_id: light.dining_table
+      data:
+        brightness: 255
+        transition: "00:30:00"
+
+- alias: "night time"
+  trigger:
+    - platform: time
+      hours: 02
+      minutes: 00
+      seconds: 00
+  action:
+    - service: scene.turn_on
+      entity_id: scene.night_time
+
+- alias: "sunrise"
+  trigger:
+    - platform: sun
+      event: sunrise
+  action:
+    - service: scene.turn_on
+      entity_id: scene.sunrise

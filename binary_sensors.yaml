@@ -1,0 +1,24 @@
+- platform: threshold
+  name: "overcast"
+  threshold: 70 
+  type: upper
+  entity_id: sensor.dark_sky_cloud_coverage
+
+- platform: mqtt
+  name: "front_door_contact"
+  state_topic: "smartthings/Front Door/contact/state"
+  payload_on: "open"
+  payload_off: "closed"
+  sensor_class: opening
+- platform: mqtt
+  name: "laundry_room_door_contact"
+  state_topic: "smartthings/Laundry Door/contact/state"
+  payload_on: "open"
+  payload_off: "closed"
+  sensor_class: opening
+- platform: mqtt
+  name: "master_bedroom_door_contact"
+  state_topic: "smartthings/Master Bedroom/contact/state"
+  payload_on: "open"
+  payload_off: "closed"
+  sensor_class: opening

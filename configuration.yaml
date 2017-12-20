@@ -1,0 +1,102 @@
+config:
+hassio:
+logger:
+  default: warning
+
+mqtt:
+  broker: !secret mqtt_broker_ip
+  port: !secret mqtt_broker_port
+  client_id: home-assistant-1
+  username: !secret mqtt_user
+  password: !secret mqtt_pass
+
+
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret latitude
+  longitude: !secret longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: !secret elevation
+  # metric for Metric, imperial for Imperial
+  unit_system: imperial
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: !secret time_zone
+  customize: !include customize.yaml
+
+# Enables the frontend
+frontend:
+
+
+http:
+  # Uncomment this to add a password (recommended!)
+  api_password: !secret hass_password
+  # Uncomment this if you are using SSL or running in Docker etc
+  base_url: !secret hass_hostname
+  server_port: !secret hass_port
+
+# Checks for available updates
+updater:
+
+# Discover some devices automatically
+#discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time.
+history:
+
+# View all events in a logbook
+logbook:
+
+# Track the sun
+sun:
+
+# Text to speech
+tts:
+  platform: google
+############################
+
+recorder: !include mysql.yaml
+#apiai: !include apiai.yaml
+group: !include groups.yaml
+switch: !include_dir_list controls/switches/
+#lock: !include locks.yaml
+media_player: !include_dir_list controls/media_players/
+sensor: !include sensors.yaml
+camera: !include cameras.yaml
+automation: !include_dir_merge_list automations/
+scene: !include_dir_list scenes/
+input_boolean: !include input_boolean.yaml
+light: !include_dir_list controls/lights/
+binary_sensor: !include binary_sensors.yaml
+script: !include_dir_merge_named scripts/
+hue: !include controls/bridges/hue.yaml
+
+
+device_tracker: 
+  - platform: owntracks
+    max_gps_accuracy: 200
+    waypoints: True
+    waypoint_whitelist:
+      - cdaoust
+      - alott
+
+zone: !include_dir_list zones/
+#notify: 
+#  - name: !secret gcm_name
+#    platform: html5
+#    gcm_api_key: !secret gcm_api_key 
+#    gcm_sender_id: !secret gcm_sender_id
+
+zwave:
+  usb_path: /dev/serial/by-id/usb-0658_0200-if00
+  network_key: !secret zwave_network_key
+  device_config:
+    light.fireplace:
+      ignored: false
+      polling_intensity: 1
+      refresh_value: 2
+      delay: 3

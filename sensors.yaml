@@ -1,0 +1,162 @@
+- platform: yr
+- platform: mqtt
+  name: "garage_sensor_motion"
+  state_topic: "smartthings/Garage Motion Sensor/motion/state"
+- platform: mqtt
+  name: "garage_sensor_temperature"
+  state_topic: "smartthings/Garage Motion Sensor/temperature/state"
+  unit_of_measurement: "°F"
+- platform: mqtt
+  name: "garage_sensor_battery"
+  state_topic: "smartthings/Garage Motion Sensor/battery/state"
+  unit_of_measurement: "%"
+- platform: mqtt
+  name: "main_floor_temperature"
+  state_topic: "smartthings/Main Floor/temperature/state"
+  unit_of_measurement: "°F"
+- platform: mqtt
+  name: "main_floor_humidity"
+  state_topic: "smartthings/Main Floor/humidity/state"
+  unit_of_measurement: "%"
+- platform: mqtt
+  name: "front_doorbell_motion"
+  state_topic: "smartthings/Front Door Bell/motion/state"
+- platform: mqtt
+  name: "front_doorbell_button"
+  state_topic: "smartthings/Front Door Bell/button/state"
+- platform: mqtt
+  name: "front_doorbell_battery"
+  state_topic: "smartthings/Front Door Bell/battery/state"
+  unit_of_measurement: "%"
+- platform: mqtt
+  name: "main_floor_occupancy"
+  state_topic: "smartthings/Main Floor/motion/state"
+- platform: mqtt
+  name: "guest_bedroom_sensor_motion"
+  state_topic: "smartthings/Guest Room Motion Sensor/motion/state"
+- platform: mqtt
+  name: "guest_bedroom_sensor_temperature"
+  state_topic: "smartthings/Guest Room Motion Sensor/temperature/state"
+  unit_of_measurement: "°F"
+- platform: mqtt
+  name: "guest_bedroom_sensor_battery"
+  state_topic: "smartthings/Guest Room Motion Sensor/battery/state"
+  unit_of_measurement: "%"
+- platform: mqtt
+  name: "camera_basement_motion"
+  state_topic: "snmptrap/camera_basement/motion/state"
+
+- platform: mqtt
+  name: "amy_android_presence"
+  state_topic: "smartthings/Amy Lott D'Aoust's Android/presence/state"
+- platform: mqtt
+  name: "charles_android_presence"
+  state_topic: "smartthings/Charles D'Aoust's Android/presence/state"
+  
+
+# Custom sensors
+#- platform: template
+#  sensors:
+#    hue_temperature:
+#      value_template: >-
+#          {%- if states.sensor.dark_sky_temperature.state | int <= 0 %}
+#           0,0,255
+#          {% elif ( ( states.sensor.dark_sky_temperature.state | int >= 0 ) and ( states.sensor.dark_sky_temperature.state | int <= 14 ) ) %}
+#           {{ states.sensor.dark_sky_temperature.state | int }},0,{{ ( states.sensor.dark_sky_temperature.state * 2 ) | int }}
+#          {% elif ( ( states.sensor.dark_sky_temperature.state | int >= 14 ) and ( states.sensor.dark_sky_temperature.state | int <= 28 ) ) %}
+#           {{ ( states.sensor.dark_sky_temperature.state | float * 0.50 ) | int }},0,{{ ( states.sensor.dark_sky_temperature.state | float * 2 ) | int }}
+#          {% elif ( ( states.sensor.dark_sky_temperature.state | int >= 28 ) and ( states.sensor.dark_sky_temperature.state | int <= 42 ) ) %}
+#           {{ ( states.sensor.dark_sky_temperature.state | float * 0.75 ) | int }},0,{{ states.sensor.dark_sky_temperature.state | int }}
+#          {% elif ( ( states.sensor.dark_sky_temperature.state | int >= 42 ) and ( states.sensor.dark_sky_temperature.state | int <= 56 ) ) %}
+#           {{ states.sensor.dark_sky_temperature.state | int }},{{ states.sensor.dark_sky_temperature.state | int }},0
+#          {% elif ( ( states.sensor.dark_sky_temperature.state | int >= 56 ) and ( states.sensor.dark_sky_temperature.state | int <= 70 ) ) %}
+#           {{ ( states.sensor.dark_sky_temperature.state | float * 1.25 ) | int }},{{ ( states.sensor.dark_sky_temperature.state | float * 0.75 ) | int }},0
+#          {% elif ( ( states.sensor.dark_sky_temperature.state >= 70 ) and ( states.sensor.dark_sky_temperature.state <= 84 ) ) %}
+#           {{ ( states.sensor.dark_sky_temperature.state | float * 1.50 ) | int }},{{ ( states.sensor.dark_sky_temperature.state | float * 0.50 ) | int }},0
+#          {% elif ( ( states.sensor.dark_sky_temperature.state >= 84 ) and ( states.sensor.dark_sky_temperature.state <= 98 ) ) %}
+#           {{ ( states.sensor.dark_sky_temperature.state | float * 1.75 ) | int }},{{ ( states.sensor.dark_sky_temperature.state | float * 0.25 ) | int }},0
+#          {% elif ( ( states.sensor.dark_sky_temperature.state >= 98 ) and ( states.sensor.dark_sky_temperature.state <= 127 ) ) %}
+#           {{ ( states.sensor.dark_sky_temperature.state | float * 2 ) | int }},{{ states.sensor.dark_sky_temperature.state }},0
+#          {% elif states.sensor.dark_sky_temperature.state >= 127 %}
+#           255,0,0
+#          {% endif %}
+
+# DarkSky
+- platform: darksky
+  api_key: b341054d8101a9b78aee66ef65c75005
+  monitored_conditions:
+    - summary
+    - icon
+    - nearest_storm_distance
+    - nearest_storm_bearing
+    - precip_type
+    - precip_intensity
+    - precip_probability
+    - temperature
+    - apparent_temperature
+    - dew_point
+    - wind_speed
+    - wind_bearing
+    - cloud_cover
+    - humidity
+    - pressure
+    - visibility
+    - ozone
+    - minutely_summary
+    - hourly_summary
+    - daily_summary
+    - temperature_max
+    - temperature_min
+    - apparent_temperature_max
+    - apparent_temperature_min
+    - precip_intensity_max
+
+- platform: template
+  sensors:
+    front_door_contact:
+      value_template: >-
+        {% if states.binary_sensor.front_door_contact.state == "on" %}
+          Open
+        {% else %}
+          Closed
+        {% endif %}
+      icon_template: >-
+        {% if states.binary_sensor.front_door_contact.state == "on" %}
+          mdi:door-open
+        {% else %}
+          mdi:door-closed
+        {% endif %}
+
+- platform: template
+  sensors:
+    laundry_room_door:
+      value_template: >-
+        {% if states.binary_sensor.laundry_room_door_sensor.state == "on" %}
+          Open
+        {% else %}
+          Closed
+        {% endif %}
+      icon_template: >-
+        {% if states.binary_sensor.laundry_room_door_sensor.state == "on" %}
+          mdi:door-open
+        {% else %}
+          mdi:door-closed
+        {% endif %}
+
+
+- platform: template
+  sensors:
+    master_bedroom_door_contact:
+      value_template: >-
+        {% if states.binary_sensor.master_bedroom_door_sensor.state == "on" %}
+          Open
+        {% else %}
+          Closed
+        {% endif %}
+      icon_template: >-
+        {% if states.binary_sensor.master_bedroom_door_sensor.state == "on" %}
+          mdi:door-open
+        {% else %}
+          mdi:door-closed
+        {% endif %}
+

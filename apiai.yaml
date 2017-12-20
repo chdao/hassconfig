@@ -1,0 +1,11 @@
+intents:
+  LocateIntent:
+    speech: >
+      {%- for state in states.device_tracker -%}
+        {%- if state.name.lower() == name.lower() -%}
+          {%- if state.state == "not home" -%}
+            I do not know where {{ name }} is.
+          {%- endif -%}
+          {{ state.name }} is {{ state.state }}
+        {%- endif -%}
+      {%- endfor -%}

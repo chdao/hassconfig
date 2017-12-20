@@ -1,0 +1,45 @@
+- alias: "amy gets up for work"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.master_bedroom_door_sensor
+  condition:
+    condition: and
+    conditions:
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+        - sat
+        - sun
+    - condition: sun
+      before: sunrise
+    - condition: time
+      after: "04:00:00"
+  action:
+    - service: scene.turn_on
+      entity_id: scene.amy_gets_up
+
+- alias: "amy left for work"
+  trigger:
+    - platform: state
+      entity_id: device_tracker.alott_bullhead
+      to: "not_home"
+  condition:
+    condition: and
+    conditions:
+     - condition: time
+       after: "04:00:00"
+       before: "07:00:00"
+     - condition: time
+       weekday:
+         - mon
+         - tue
+         - wed
+         - fri
+         - sat
+  action:
+    - service: scene.turn_on
+      entity_id: scene.night_time

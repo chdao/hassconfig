@@ -1,0 +1,11 @@
+- name: living_room_normal
+  entities:
+    light.fireplace_lighting:
+      state: on
+      transition: 5
+      brightness: "100"
+    light.behind_the_couch:
+      state: on
+      transition: 5
+      brightness: "200"
+      rgb_color: [100, 100, 100]

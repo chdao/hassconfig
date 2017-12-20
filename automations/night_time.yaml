@@ -1,0 +1,86 @@
+- alias: "night time during weekdays"
+  trigger:
+    - platform: time
+      hours: 23
+      minutes: 00
+      seconds: 00
+  condition: 
+    condition: time
+    weekday:
+      - sun
+      - mon
+      - tue
+      - wed
+      - thu
+  action:
+    - service: scene.turn_on
+      entity_id: scene.night_time
+
+- alias: "night time during weekends"
+  trigger:
+    - platform: time
+      hours: 03
+      minutes: 00
+      seconds: 00
+  condition: 
+    condition: time
+    weekday:
+      - fri
+      - sat
+
+  action:
+    - service: scene.turn_on
+      entity_id: scene.night_time
+ 
+- alias: "door unlocks at night"
+  trigger:
+    - platform: state
+      entity_id: lock.front_door
+      to: "unlocked"
+  condition:
+   condition: or
+   conditions: 
+     - condition: sun
+       after: sunset
+     - condition: sun
+       before: sunrise
+  action:
+    - service: script.turn_on
+      entity_id: script.timed_front_door_light
+      data:
+        variables:
+          desired_delay: "00:02:00"
+   
+
+- alias: "door opens at night"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.front_door_contact
+      to: "on"
+  condition:
+   condition: or
+   conditions: 
+     - condition: sun
+       after: sunset
+     - condition: sun
+       before: sunrise
+  action:
+    - service: homeassistant.turn_on
+      entity_id: script.timed_front_door_light
+      data:
+        variables:
+          desired_delay: "00:02:00"
+
+- alias: "turn off the lights at night if we're gone"
+  trigger:
+    - platform: time
+      hours: "21"
+      minutes: "00"
+      seconds: "00"
+  condition:
+    condition: template 
+    value_template: '{{ states("group.owners" ) != "home" }}'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.night_time
+    

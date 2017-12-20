@@ -1,0 +1,10 @@
+- alias: "laundry room door"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.laundry_room_door_sensor
+  action:
+    service: script.turn_on
+    entity_id: script.laundry_room_door
+    data:
+      variables:
+        desired_delay: "00:07:00"

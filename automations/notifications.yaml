@@ -1,0 +1,10 @@
+- alias: "door open"
+  trigger:
+    platform: state
+    entity_id: switch.basement_stairs
+  action:
+    service: notify.cdaoust
+    data:
+      message: "Test"
+      title: "test2"
+  

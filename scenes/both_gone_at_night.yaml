@@ -1,0 +1,17 @@
+- name: both_gone_at_night
+  entities:
+   light.fireplace_lighting:
+     state: on
+     brightness: "20"
+   light.behind_the_couch:
+     state: on
+     brightness: 50 
+     rgb_color: [0, 255, 0]
+   light.dining_table:
+     state: off
+   light.kitchen_small_light:
+     staite: on
+   light.kitchen_main_light:
+     state: off
+   lock.front_door:
+     state: locked

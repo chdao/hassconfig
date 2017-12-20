@@ -1,0 +1,32 @@
+- name: sunset
+  entities:
+    light.fireplace_level:
+      state: on
+      brightness: "150"
+      transition: "3600"
+    light.behind_the_couch:
+      state: on
+      brightness: "200"
+      transition: "3600"
+      rgb_color: [255,0,0]
+
+- name: sunrise
+  entities:
+    light.fireplace_lighting:
+      state: off
+    light.behind_the_couch:
+      state: off
+    switch.kitchen_small_light:
+      state: off
+    switch.kitche_main_light:
+      state: off
+    switch.basement_stairs:
+      state: off
+    light.master_bedroom:
+      state: off
+    switch.front_door_inside_light:
+      state: off 
+    group.dining_table:
+      state: off
+    light.lifx_kitchen:
+      state: off

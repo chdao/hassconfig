@@ -1,0 +1,20 @@
+laundry_room_door:
+  sequence:
+    - service: script.turn_off
+      data:
+        entity_id: script.timer_laundry_room
+    - service: script.turn_on
+      data_template:
+        entity_id: script.timer_laundry_room
+        variables:
+          desired_delay: '{{ desired_delay }}'
+
+timer_laundry_room:
+  alias: "turn on laundry room light and turn off after desired_delay"
+  sequence:
+    - service: light.turn_on
+      data:
+        entity_id: group.laundry_room_lights
+    - delay: '{{ desired_delay }}'
+    - service: light.turn_off
+      entity_id: group.laundry_room_lights

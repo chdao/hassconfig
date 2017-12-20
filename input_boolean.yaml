@@ -1,0 +1,6 @@
+chromebox_kodi_movie:
+  initial: off
+owners_gone:
+  initial: off
+kitchen_light:
+  initial: off

@@ -1,0 +1,10 @@
+device_refresh: 
+  sequence:
+     - service: mqtt.publish
+       data:
+         topic: "owntracks/cdaoust/trltetmo/cmd"
+         payload_template: '{"_type":"cmd","action":"reportLocation"}'
+     - service: mqtt.publish
+       data:
+         topic: "owntracks/alott/bullhead/cmd"
+         payload_template: '{"_type":"cmd","action":"reportLocation"}'

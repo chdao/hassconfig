@@ -1,0 +1,13 @@
+- alias: "both gone at night"
+  trigger:
+    - platform: state
+      entity_id: group.owners
+      to: "not home"
+  condition:
+    condition: sun
+    after: sunset
+  action:
+    - service: scene.turn_on
+      entity_id: scene.both_gone_at_night
+    - service: scene.turn_on
+      entity_id: input_boolean.owners_gone

@@ -1,0 +1,40 @@
+timed_front_door_light:
+  sequence:
+    - service: script.turn_off
+      data:
+        entity_id: script.delayed_front_door_light
+    - service: script.turn_on
+      data_template:
+        entity_id: script.delayed_front_door_light
+        variables:
+          desired_delay: '{{ desired_delay }}'
+
+delayed_front_door_light:
+  sequence:
+    - service: switch.turn_on
+      data:
+        entity_id: switch.front_door_inside_light
+    - delay: '{{ desired_delay }}'
+    - service: switch.turn_off
+      data:
+        entity_id: switch.front_door_inside_light
+
+
+timed_front_door_lock:
+  sequence:
+    - service: script.turn_off
+      data:
+        entity_id: script.timer_front_door_lock
+    - service: script.turn_on
+      data_template:
+        entity_id: script.timer_front_door_lock
+        variables: 
+          desired_delay: '{{ desired_delay }}'
+
+timer_front_door_lock:
+  sequence:
+    - delay: '{{ desired_delay }}'
+    - service: lock.lock
+      data:
+        entity_id: lock.front_door_deadbolt_locked
+      

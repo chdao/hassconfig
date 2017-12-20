@@ -1,0 +1,21 @@
+- name: movie_playing
+  entities:
+   light.fireplace_lighting:
+     state: on
+     transition: "10"
+     brightness: "25"
+   light.behind_the_couch:
+     state: on
+     transition: "10"
+     brightness: "150"
+     rgb_color: [255, 0, 0]
+   light.dining_table:
+     transition: "10"
+     brightness: 20
+
+- name: movie_paused 
+  entities:
+   light.fireplace_lighting:
+     state: on
+     transition: 2
+     brightness: "150"

@@ -1,0 +1,8 @@
+- alias: "doorbell rings"
+  trigger:
+    - platform: state
+      entity_id: sensor.front_doorbell_button
+      to: "pushed"
+  action:
+    - service: script.turn_on
+      entity_id: script.doorbell_pushed

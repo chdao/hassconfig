@@ -1,0 +1,13 @@
+*
+!*.yaml
+!scenes
+!controls
+!automations
+!scripts
+!.gitignore
+secrets.yaml
+known_devices.yaml
+zones
+customize.yaml
+cameras.yaml
+device_tracker.yaml

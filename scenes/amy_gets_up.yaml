@@ -1,0 +1,16 @@
+- name: amy_gets_up
+  entities:
+   light.fireplace_level:
+     state: on
+     brightness: "50"
+   light.behind_the_couch:
+     state: on
+     brightness: 100
+     rgb_color: [0, 0, 255]
+   light.lifx_kitchen:
+     state: on
+     brightness: 50
+     rgb_color: [0,0,255]
+   group.dining_table:
+     state: on
+     brightness: 100

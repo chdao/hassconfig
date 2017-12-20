@@ -1,0 +1,20 @@
+- name: night_time
+  entities:
+   light.fireplace_lighting:
+     state: off
+   light.behind_the_couch:
+     state: off
+   light.dinning_table:
+     state: off
+   light.basement_stairs:
+     state: off
+   light.basement:
+     state: off
+   light.basement_outside:
+     state: off
+   lock.front_door:
+     state: locked
+   media_player.kitchen_home:
+     state: stop
+   light.lifx_kitchen:
+     state: off

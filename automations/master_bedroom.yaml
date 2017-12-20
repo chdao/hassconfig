@@ -1,0 +1,17 @@
+- alias: "turn on light in the master bedroom when door opens"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.master_bedroom_door_sensor
+  condition:
+    condition: and
+    conditions: 
+      - condition: sun
+        after: sunset
+      - condition: time
+        before: "22:00:00"
+  action:
+    service: light.turn_on
+    entity_id: light.master_bedroom
+    data:
+      brightness: 100
+      
