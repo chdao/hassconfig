@@ -1,6 +1,0 @@
-platform: mqtt
-name: front_door_inside_light
-command_topic: "smartthings/Front Door Inside Light/switch"
-state_topic: "smartthings/Front Door Inside Light/switch/state"
-payload_on: "on"
-payload_off: "off"

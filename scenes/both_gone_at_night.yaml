@@ -1,6 +1,6 @@
 - name: both_gone_at_night
   entities:
-   light.fireplace_lighting:
+   light.fireplace_level:
      state: on
      brightness: "20"
    light.behind_the_couch:

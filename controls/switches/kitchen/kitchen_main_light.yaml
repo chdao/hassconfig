@@ -1,6 +1,0 @@
-platform: mqtt
-name: kitchen_main_light
-command_topic: "smartthings/Kitchen Main Light/switch"
-state_topic: "smartthings/Kitchen Main Light/switch/state"
-payload_on: "on"
-payload_off: "off"

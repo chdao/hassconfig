@@ -10,6 +10,14 @@
     - last_motion
     - volume
 
+# Z-wave Templates
+- platform: template
+  sensors:
+    front_door_deadbolt_battery:
+      friendly_name: 'Front Door Battery'
+      value_template: '{{ states.zwave.front_door_deadbolt.attributes.battery_level }}'
+      unit_of_measurement: '%'
+
 # MQTT
 
 - platform: mqtt

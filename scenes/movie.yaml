@@ -1,6 +1,6 @@
 - name: movie_playing
   entities:
-   light.fireplace_lighting:
+   light.fireplace_level:
      state: on
      transition: "10"
      brightness: "25"
@@ -15,7 +15,7 @@
 
 - name: movie_paused 
   entities:
-   light.fireplace_lighting:
+   light.fireplace_level:
      state: on
      transition: 2
      brightness: "150"

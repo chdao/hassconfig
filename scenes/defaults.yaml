@@ -1,6 +1,6 @@
 - name: living_room_normal
   entities:
-    light.fireplace_lighting:
+    light.fireplace_level:
       state: on
       transition: 5
       brightness: "100"

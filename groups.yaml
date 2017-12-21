@@ -137,10 +137,9 @@ front_door:
   entities:
     - sensor.front_door_contact
     - lock.front_door_deadbolt_locked
-    - sensor.front_doorbell_motion
-    - sensor.front_doorbell_button
-    - sensor.front_doorbell_battery
-    - sensor.front_door_lock_battery
+    - sensor.front_door_deadbolt_battery
+    - binary_sensor.ring_front_door_motion
+    - binary_sensor.ring_front_door_ding
 
 garage:
   name: "Garage"

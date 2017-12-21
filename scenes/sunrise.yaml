@@ -1,6 +1,6 @@
 - name: night_time
   entities:
-   light.fireplace_lighting:
+   light.fireplace_level:
      state: off
    light.behind_the_couch:
      state: off
