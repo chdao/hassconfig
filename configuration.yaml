@@ -59,7 +59,9 @@ tts:
   platform: google
 ############################
 
-recorder: !include mysql.yaml
+recorder: 
+  db_url: !secret mysql_connection
+
 #apiai: !include apiai.yaml
 group: !include groups.yaml
 switch: !include_dir_list controls/switches/
@@ -76,11 +78,11 @@ script: !include_dir_merge_named scripts/
 hue: !include controls/bridges/hue.yaml
 
 ecobee:
-  api_key: !secrets ecobee_key
+  api_key: !secret ecobee_key
 
 ring:
-  username: !secrets ring_username
-  password: !secrets ring_password
+  username: !secret ring_username
+  password: !secret ring_password
 
 device_tracker: 
   - platform: owntracks

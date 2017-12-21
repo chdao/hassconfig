@@ -1,4 +1,17 @@
 - platform: yr
+
+# ring.com
+
+- platform: ring
+  monitored_conditions:
+    - battery
+    - last_activity
+    - last_ding
+    - last_motion
+    - volume
+
+# MQTT
+
 - platform: mqtt
   name: "garage_sensor_motion"
   state_topic: "smartthings/Garage Motion Sensor/motion/state"

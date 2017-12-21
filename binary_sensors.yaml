@@ -1,8 +1,17 @@
+# ring.com
+- platform: ring
+  monitored_conditions:
+    - ding
+    - motion
+
+
 - platform: threshold
   name: "overcast"
   threshold: 70 
   type: upper
   entity_id: sensor.dark_sky_cloud_coverage
+
+# MQTT
 
 - platform: mqtt
   name: "front_door_contact"
